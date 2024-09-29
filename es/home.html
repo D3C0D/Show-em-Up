@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Show 'em Up Español</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Quill CSS for Rich Text Editor -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <p class="navbar-brand">Show 'em Up (Español)</p>
+            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#settingsOffcanvas" aria-controls="settingsOffcanvas">
+                <i class="bi bi-gear"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Side Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="settingsOffcanvas" aria-labelledby="settingsOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="settingsOffcanvasLabel">Settings</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div class="form-group mb-3">
+                <label for="min-age">Min Age:</label>
+                <input type="number" id="min-age" class="form-control" value="1" min="1" max="120">
+            </div>
+            <div class="form-group mb-3">
+                <label for="max-age">Max Age:</label>
+                <input type="number" id="max-age" class="form-control" value="120" min="1" max="120">
+            </div>
+            <div class="form-group mb-3">
+                <label for="num-characters">Number of Characters:</label>
+                <input type="number" id="num-characters" class="form-control" value="3" min="1" max="10">
+            </div>
+            <div class="form-group mb-3">
+                <label for="language-select">Language:</label>
+                <select id="language-select" class="form-control">
+                    <option value="en" selected>English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+            <!-- Spacer to push the buttons to the bottom -->
+            <div class="flex-grow-1"></div>
+            <!-- Apply Settings Button -->
+            <div class="form-group mb-3">
+                <button id="apply-settings-button" class="btn btn-primary w-100">Apply Settings</button>
+            </div>
+            <!-- Theme Toggle Button -->
+            <div class="form-group mb-3 text-center">
+                <button id="theme-toggle" class="btn btn-link">
+                    <i id="theme-icon" class="bi bi-lightbulb"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1>BAJO CONSTRUCCIÓN, AÚN NO FUNCIONA EN ESPAÑOL</h1>
+        <!-- Generate Characters Button -->
+        <div class="text-center mb-4" id="button-container">
+            <button type="button" class="btn btn-primary btn-lg" id="generate-button" disabled>
+                Start Writing!
+            </button>
+        </div>
+
+        <!-- Tabs and Scene Section (Hidden by default) -->
+        <div id="tabs-container" style="display: none;">
+            <!-- Scene Section -->
+            <div id="scene-container" class="mt-4">
+                <h3>Scene</h3>
+                <p id="scene-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur
+                    interdum, nisl nisi consectetur nisi, euismod aliquam nisi nisl euismod nisi.
+                </p>
+            </div>
+            <!-- Action Buttons -->
+            <div id="actions-container" class="text-center mt-4">
+                <button id="regenerate-all-button" class="btn btn-primary me-2">
+                    Regenerate All Characters
+                </button>
+                <button id="export-pdf-button" class="btn btn-primary">
+                    Export All Characters as PDF
+                </button>
+            </div>
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-tabs mt-4" id="characterTabs" role="tablist">
+                <!-- Tabs will be inserted here dynamically -->
+            </ul>
+            <!-- Tabs Content -->
+            <div class="tab-content" id="characterTabsContent">
+                <!-- Tab panes will be inserted here dynamically -->
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="row mt-5" id="tips-section">
+            <div class="col-md-6">
+                <h2>What is Show em' Up?</h2>
+                <p>
+                    This tool is based on a principle that in story telling, specially from the character perspective, one should "Show, don't Tell." This principle I learned on a class by Brandon Sanderson on characters, where he explains this in much more details and better than I will be able to here.
+                </p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vm6h4Oa0jM0?si=R04DuQwwRcDIklZj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>
+                    One of the examples of the class was:
+                    <br>
+                    <br>
+                    Age: 56
+                    <br>
+                    Gender: Female
+                    <br>
+                    Occupation: Mortician
+                    <br>
+                    Place of Living: Motel
+                    <br>
+                    Dark Secret: Killed her brother (Zombie)
+                    <br>
+                    <br>
+                    And the idea is to describe that character through the scene, for example:
+                    <br>
+                    <br>
+                    "She was tired after the long shift that ended deep into the night. The stench was hard to get rid of, even after a shower, few people would believe how much death can stink.
+
+                    Through the cheap blinds, the lights of the signs on the street can be seen. Red, purple, white. A whole spectrum of colors, mostly from the sign at the top of the motel, making it hard to sleep.
+
+                    Her mind made a puzzle, hard to set straight, always running wild from her control, she could not avoid reminiscing of other times. Times when things were simple. At her almost sixties, she could not complain, her life was good enough, but the past, specially with this smell enhancing the memories, seemed so much simpler, a time when she had someone to rely on, someone who would be with her for life... or at least for his life. And even in death, that smile would not stop haunting her."
+                    <br>
+                    <br>
+                    I am not the best writer, so the scene can be improved, but you get the idea, I didn't mention explicitly that she is a mortician, but it can be kind of inferred from the context and the way the scene is described from her eyes.
+                    <br>
+                    <br>
+                    I would heavily recommend you watch the whole playlist of lectures to know more as they are very informative!
+                    <br>
+                    <br>
+                    <a href="https://youtube.com/playlist?list=PLH3mK1NZn9QqOSj3ObrP3xL8tEJQ12-vL&si=ytKSppYbu8fnh54q">Brandon Sanderson - 318R by Camera Panda</a>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h2>How to use it:</h2>
+                <p>
+                    The tool will generate 3 characters at random (or more, depending on the settings) with predefined occupations, places of living and dark secrets.
+                    <br>
+                    <br>
+                    Your job is to take these characters and describe the scene (also predefined and given to you at random) from their eyes, making sure to hint at who they are, based on what they see on the scene and how they react.
+                    <br>
+                    <br>
+                    There is an editor on the page, so no external tools are needed, just have fun!
+                    <br>
+                    <br>
+                    Note: Occupations, places of living, dark secrets and scenes, have been generated using AI to have a big sample as a base, but if you want, feel free to add more on the source code and I will try to accept the changes to have more variety!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Quill JS for Rich Text Editor -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

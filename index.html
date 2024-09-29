@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show 'em Up</title>
+    <script>
+        var lang = localStorage.getItem('lang');
+        if (!lang) {
+            localStorage.setItem('lang', 'en');
+            window.location.href = '/en/home.html';
+        } else {
+            // You can add additional logic here to redirect based on the stored language
+            window.location.href = '/' + lang.toLowerCase() + '/home.html';
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
