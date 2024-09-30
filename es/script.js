@@ -497,7 +497,7 @@ document.getElementById('apply-settings-button').addEventListener('click', funct
     }
 
     // Reload the page
-    window.location.href = '/Show-em-Up/index.html';
+    window.location.href = '/Show-em-Up/';
 });
 
 // Event listener for settings inputs
