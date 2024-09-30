@@ -52,18 +52,32 @@
                     <option value="es">Español</option>
                 </select>
             </div>
-            <!-- Spacer to push the buttons to the bottom -->
-            <div class="flex-grow-1"></div>
             <!-- Apply Settings Button -->
             <div class="form-group mb-3">
                 <button id="apply-settings-button" class="btn btn-primary w-100">Apply Settings</button>
             </div>
+            <!-- Spacer to push the buttons to the bottom -->
+            <div class="flex-grow-1"></div>
             <!-- Theme Toggle Button -->
             <div class="form-group mb-3 text-center">
                 <button id="theme-toggle" class="btn btn-link">
                     <i id="theme-icon" class="bi bi-lightbulb"></i>
                 </button>
             </div>
+
+            <!-- Save and load progress // Theme switch -->
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <!-- Button to Save progress -->
+                    <button id="download-btn" class="btn btn-primary"><i class="bi bi-download"></i> Save Progress</button>
+                </div>
+                <div class="col-md-6">
+                    <!-- Hidden file input -->
+                    <input type="file" id="file-input" accept="application/json" style="display: none;" />
+                    <!-- Button to load progress -->
+                    <button id="upload-btn" class="btn btn-primary"><i class="bi bi-upload"></i> Load Progress</button>
+                </div>
+            </div>            
         </div>
     </div>
 

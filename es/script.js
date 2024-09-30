@@ -42,11 +42,11 @@ async function loadData() {
 // Function to generate random character data
 function generateCharacterData(index, minAge, maxAge) {
     const age = Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge;
-    const gender = Math.random() < 0.5 ? 'Male' : 'Female';
+    const gender = Math.random() < 0.5 ? 'Hombre' : 'Mujer';
     const occupation = occupations[Math.floor(Math.random() * occupations.length)];
     const placeOfLiving = placesOfLiving[Math.floor(Math.random() * placesOfLiving.length)];
     const darkSecret = darkSecrets[Math.floor(Math.random() * darkSecrets.length)];
-    const name = 'Character ' + (index + 1);
+    const name = 'Personaje ' + (index + 1);
 
     return {
         name,
@@ -64,7 +64,7 @@ function generateCharacters() {
     // Hide the button
     document.getElementById('button-container').style.display = 'none';
 
-    // Hide the Tips Section
+    // Hide the instructions Section
     document.getElementById('tips-section').style.display = 'none';
 
     // Show the tabs container
@@ -98,7 +98,7 @@ function generateCharacters() {
     if (uniqueGenders.size === 1 && characters.length > 1) {
         // All characters have the same gender
         // Change the gender of one character to the opposite
-        const oppositeGender = genders[0] === 'Male' ? 'Female' : 'Male';
+        const oppositeGender = genders[0] === 'Hombre' ? 'Mujer' : 'Hombre';
         const randomIndex = Math.floor(Math.random() * characters.length);
         characters[randomIndex].gender = oppositeGender;
     }
@@ -147,7 +147,7 @@ function generateCharacters() {
         // Create name input field
         const nameLabel = document.createElement('label');
         nameLabel.className = 'character-name-label';
-        nameLabel.innerText = 'Name:';
+        nameLabel.innerText = 'Nombre:';
 
         const nameInput = document.createElement('input');
         nameInput.type = 'text';
@@ -170,19 +170,19 @@ function generateCharacters() {
         // Age Row
         const ageRow = document.createElement('div');
         ageRow.className = 'mb-2';
-        ageRow.innerHTML = `<p class="mb-0"><strong>Age:</strong> ${character.age}</p>`;
+        ageRow.innerHTML = `<p class="mb-0"><strong>Edad:</strong> ${character.age}</p>`;
         charInfo.appendChild(ageRow);
 
         // Gender Row
         const genderRow = document.createElement('div');
         genderRow.className = 'mb-2';
-        genderRow.innerHTML = `<p class="mb-0"><strong>Gender:</strong> ${character.gender}</p>`;
+        genderRow.innerHTML = `<p class="mb-0"><strong>Género:</strong> ${character.gender}</p>`;
         charInfo.appendChild(genderRow);
 
         // Occupation Row
         const occupationRow = document.createElement('div');
         occupationRow.className = 'd-flex align-items-center mb-2';
-        occupationRow.innerHTML = `<p class="mb-0"><strong>Occupation:</strong> <span id="occupation-${index}">${character.occupation}</span></p>`;
+        occupationRow.innerHTML = `<p class="mb-0"><strong>Ocupación:</strong> <span id="occupation-${index}">${character.occupation}</span></p>`;
         const regenOccupationBtn = document.createElement('button');
         regenOccupationBtn.className = 'btn btn-link btn-sm ms-2';
         regenOccupationBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
@@ -196,7 +196,7 @@ function generateCharacters() {
         // Place of Living Row
         const placeRow = document.createElement('div');
         placeRow.className = 'd-flex align-items-center mb-2';
-        placeRow.innerHTML = `<p class="mb-0"><strong>Place of Living:</strong> <span id="place-${index}">${character.placeOfLiving}</span></p>`;
+        placeRow.innerHTML = `<p class="mb-0"><strong>Lugar de residencia:</strong> <span id="place-${index}">${character.placeOfLiving}</span></p>`;
         const regenPlaceBtn = document.createElement('button');
         regenPlaceBtn.className = 'btn btn-link btn-sm ms-2';
         regenPlaceBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
@@ -210,7 +210,7 @@ function generateCharacters() {
         // Dark Secret Row
         const secretRow = document.createElement('div');
         secretRow.className = 'd-flex align-items-center mb-2';
-        secretRow.innerHTML = `<p class="mb-0"><strong>Dark Secret:</strong> <span id="secret-${index}">${character.darkSecret}</span></p>`;
+        secretRow.innerHTML = `<p class="mb-0"><strong>Secreto Oscuro:</strong> <span id="secret-${index}">${character.darkSecret}</span></p>`;
         const regenSecretBtn = document.createElement('button');
         regenSecretBtn.className = 'btn btn-link btn-sm ms-2';
         regenSecretBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
@@ -226,7 +226,7 @@ function generateCharacters() {
         tooltipIcon.className = 'bi bi-question-circle-fill ms-2';
         tooltipIcon.setAttribute('data-bs-toggle', 'tooltip');
         tooltipIcon.setAttribute('data-bs-placement', 'top');
-        tooltipIcon.setAttribute('title', 'You can reroll Occupation, Place of Living, or Dark Secret if they break the consistency.');
+        tooltipIcon.setAttribute('title', 'Puedes volver a generar la Ocupación, el Lugar de Residencia o el Secreto Oscuro si rompen la consistencia.');
         charInfo.appendChild(tooltipIcon);
 
         // Initialize tooltip
@@ -265,7 +265,7 @@ document.getElementById('generate-button').addEventListener('click', function ()
 // Event listener for the Regenerate All Characters button
 document.getElementById('regenerate-all-button').addEventListener('click', function () {
     // Confirm with the user before regenerating
-    const confirmRegenerate = confirm('Are you sure you want to regenerate all characters? All unsaved progress will be lost.');
+    const confirmRegenerate = confirm('¿Estás seguro de que quieres regenerar todos los personajes? Se perderá todo el progreso no guardado.');
     if (confirmRegenerate) {
         generateCharacters();
     }
@@ -275,7 +275,7 @@ document.getElementById('regenerate-all-button').addEventListener('click', funct
 document.getElementById('export-pdf-button').addEventListener('click', function () {
     // Check if characters have been generated
     if (!generatedCharacters || generatedCharacters.length === 0) {
-        alert('No characters to export. Please generate characters first.');
+        alert('No hay personajes para exportar. Por favor, genera personajes primero.');
         return;
     }
 
@@ -336,14 +336,6 @@ document.getElementById('export-pdf-button').addEventListener('click', function 
             .character-info p {
                 margin: 0 0 5px;
             }
-            .editor-content {
-                background-color: #ecf0f1;
-                padding: 15px;
-                border-radius: 8px;
-                border: 1px solid #bdc3c7;
-                margin-top: 20px;
-                min-height: 150px;
-            }
             /* Quill rich text formatting */
             .ql-editor {
                 font-size: 14px;
@@ -377,36 +369,19 @@ document.getElementById('export-pdf-button').addEventListener('click', function 
                 text-decoration: none;
                 color: #3498db;
             }
-            @media print {
-                /* Ensure footer is only on the last page and doesn't break the flow */
-                footer {
-                    position: fixed;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    border-top: 1px solid #ddd;
-                }
-                .character {
-                    /* Force page break after each character */
-                    page-break-after: always;
-                }
-                .character:last-child {
-                    page-break-after: auto;
-                }
-            }
           </style>
         </head>
         <body>
-          <h1>Exported Characters Report</h1>
+          <h1>Informe de Personajes Exportados</h1>
           
           <div class="scene-title">
-            <h2>Scene</h2>
+            <h2>Escena</h2>
             <p>${scene}</p>
           </div>
 
           <!-- Table of Contents -->
           <div class="toc">
-            <h3>Table of Contents</h3>
+            <h3>Tabla de Contenidos</h3>
             <ul>
     `;
 
@@ -430,11 +405,11 @@ document.getElementById('export-pdf-button').addEventListener('click', function 
           <div id="character-${index}" class="character">
             <h2>${character.name}</h2>
             <div class="character-info">
-              <p><strong>Age:</strong> ${character.age}</p>
-              <p><strong>Gender:</strong> ${character.gender}</p>
-              <p><strong>Occupation:</strong> ${character.occupation}</p>
-              <p><strong>Place of Living:</strong> ${character.placeOfLiving}</p>
-              <p><strong>Dark Secret:</strong> ${character.darkSecret}</p>
+              <p><strong>Edad:</strong> ${character.age}</p>
+              <p><strong>Género:</strong> ${character.gender}</p>
+              <p><strong>Ocupación:</strong> ${character.occupation}</p>
+              <p><strong>Lugar de Residencia:</strong> ${character.placeOfLiving}</p>
+              <p><strong>Secreto Oscuro:</strong> ${character.darkSecret}</p>
             </div>
             <div class="editor-content ql-editor">
               ${editorContent}
@@ -446,7 +421,7 @@ document.getElementById('export-pdf-button').addEventListener('click', function 
     htmlContent += `
           <!-- Footer -->
           <footer>
-            <p>Exported on ${new Date().toLocaleDateString()}</p>
+            <p>Exportado en ${new Date().toLocaleDateString()} usando https://d3c0d.github.io/Show-em-Up/</p>
           </footer>
 
           <script>
@@ -515,14 +490,14 @@ document.getElementById('apply-settings-button').addEventListener('click', funct
 
     // Warn user about losing unsaved progress
     if (settingsChanged) {
-        const confirmChange = confirm('Applying settings will reload the page and unsaved progress will be lost. Do you want to continue?');
+        const confirmChange = confirm('Aplicar los ajustes recargará la página y se perderá el progreso no guardado. ¿Quieres continuar?');
         if (!confirmChange) {
             return;
         }
     }
 
     // Reload the page
-    window.location.href = '/index.html';
+    window.location.href = '/Show-em-Up/index.html';
 });
 
 // Event listener for settings inputs
@@ -586,6 +561,255 @@ window.addEventListener('load', function () {
         document.getElementById('num-characters').value = numCharacters;
     }
 });
+
+// Functions to save progress
+function saveDataToJson() {
+    // Prepare data to save
+    const dataToSave = {
+        scene: scene,
+        characters: generatedCharacters.map(character => {
+            return {
+                name: character.name,
+                age: character.age,
+                gender: character.gender,
+                occupation: character.occupation,
+                placeOfLiving: character.placeOfLiving,
+                darkSecret: character.darkSecret,
+                quillContent: character.quill.root.innerHTML // Save Quill editor's content as HTML
+            };
+        })
+    };
+
+    // Convert data to JSON
+    const jsonData = JSON.stringify(dataToSave, null, 2);
+
+    // Create a Blob from the JSON data
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    // Create a link element to download the JSON file
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'characters_and_scene.json'; // Filename for the JSON file
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // Clean up the URL object
+    URL.revokeObjectURL(url);
+}
+
+// Function to load progress
+function loadDataFromJson(file) {
+    // Create a FileReader to read the uploaded JSON file
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        try {
+            // Hide the button
+            document.getElementById('button-container').style.display = 'none';
+
+            // Hide the instructions Section
+            document.getElementById('tips-section').style.display = 'none';
+
+            // Show the tabs container
+            document.getElementById('tabs-container').style.display = 'block';
+            // Parse the JSON data
+            const data = JSON.parse(event.target.result);
+
+            // Restore the scene
+            scene = data.scene || "";
+            document.getElementById('scene-text').innerHTML = scene;
+
+            // Restore characters
+            if (data.characters && data.characters.length > 0) {
+                generatedCharacters = data.characters;
+
+                // Get references to tabs navigation and content
+                const tabsNav = document.getElementById('characterTabs');
+                const tabsContent = document.getElementById('characterTabsContent');
+
+                // Clear any existing tabs and content
+                tabsNav.innerHTML = '';
+                tabsContent.innerHTML = '';
+
+                // Rebuild the UI and initialize Quill editors
+                generatedCharacters.forEach((character, index) => {
+                    const tabId = 'character' + index;
+
+                    // Create tab nav item
+                    const navItem = document.createElement('li');
+                    navItem.className = 'nav-item';
+                    const navLink = document.createElement('a');
+                    navLink.className = 'nav-link' + (index === 0 ? ' active' : '');
+                    navLink.id = tabId + '-tab';
+                    navLink.setAttribute('data-bs-toggle', 'tab');
+                    navLink.href = '#' + tabId;
+                    navLink.role = 'tab';
+                    navLink.innerText = character.name;
+                    navItem.appendChild(navLink);
+                    tabsNav.appendChild(navItem);
+
+                    // Create tab pane
+                    const tabPane = document.createElement('div');
+                    tabPane.className = 'tab-pane fade' + (index === 0 ? ' show active' : '');
+                    tabPane.id = tabId;
+                    tabPane.role = 'tabpanel';
+
+                    // Create row with two columns
+                    const row = document.createElement('div');
+                    row.className = 'row mt-4';
+
+                    // Left Column - Character Info
+                    const colLeft = document.createElement('div');
+                    colLeft.className = 'col-md-6 col-12 character-info';
+
+                    // Create name input field
+                    const nameLabel = document.createElement('label');
+                    nameLabel.className = 'character-name-label';
+                    nameLabel.innerText = 'Name:';
+
+                    const nameInput = document.createElement('input');
+                    nameInput.type = 'text';
+                    nameInput.className = 'form-control character-name-input';
+                    nameInput.value = character.name;
+
+                    // Event listener to update tab label when name changes
+                    nameInput.addEventListener('input', function () {
+                        character.name = nameInput.value || 'Unnamed Character';
+                        navLink.innerText = character.name;
+                    });
+
+                    // Append name label and input to the left column
+                    colLeft.appendChild(nameLabel);
+                    colLeft.appendChild(nameInput);
+
+                    // Add character information (age, gender, occupation, place of living, dark secret)
+                    const charInfo = document.createElement('div');
+                    // Age Row
+                    const ageRow = document.createElement('div');
+                    ageRow.className = 'mb-2';
+                    ageRow.innerHTML = `<p class="mb-0"><strong>Age:</strong> ${character.age}</p>`;
+                    charInfo.appendChild(ageRow);
+
+                    // Gender Row
+                    const genderRow = document.createElement('div');
+                    genderRow.className = 'mb-2';
+                    genderRow.innerHTML = `<p class="mb-0"><strong>Gender:</strong> ${character.gender}</p>`;
+                    charInfo.appendChild(genderRow);
+
+                    // Occupation Row
+                    const occupationRow = document.createElement('div');
+                    occupationRow.className = 'd-flex align-items-center mb-2';
+                    occupationRow.innerHTML = `<p class="mb-0"><strong>Occupation:</strong> <span id="occupation-${index}">${character.occupation}</span></p>`;
+                    const regenOccupationBtn = document.createElement('button');
+                    regenOccupationBtn.className = 'btn btn-link btn-sm ms-2';
+                    regenOccupationBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
+                    regenOccupationBtn.addEventListener('click', () => {
+                        character.occupation = occupations[Math.floor(Math.random() * occupations.length)];
+                        document.getElementById(`occupation-${index}`).innerText = character.occupation;
+                    });
+                    occupationRow.appendChild(regenOccupationBtn);
+                    charInfo.appendChild(occupationRow);
+
+                    // Place of Living Row
+                    const placeRow = document.createElement('div');
+                    placeRow.className = 'd-flex align-items-center mb-2';
+                    placeRow.innerHTML = `<p class="mb-0"><strong>Place of Living:</strong> <span id="place-${index}">${character.placeOfLiving}</span></p>`;
+                    const regenPlaceBtn = document.createElement('button');
+                    regenPlaceBtn.className = 'btn btn-link btn-sm ms-2';
+                    regenPlaceBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
+                    regenPlaceBtn.addEventListener('click', () => {
+                        character.placeOfLiving = placesOfLiving[Math.floor(Math.random() * placesOfLiving.length)];
+                        document.getElementById(`place-${index}`).innerText = character.placeOfLiving;
+                    });
+                    placeRow.appendChild(regenPlaceBtn);
+                    charInfo.appendChild(placeRow);
+
+                    // Dark Secret Row
+                    const secretRow = document.createElement('div');
+                    secretRow.className = 'd-flex align-items-center mb-2';
+                    secretRow.innerHTML = `<p class="mb-0"><strong>Dark Secret:</strong> <span id="secret-${index}">${character.darkSecret}</span></p>`;
+                    const regenSecretBtn = document.createElement('button');
+                    regenSecretBtn.className = 'btn btn-link btn-sm ms-2';
+                    regenSecretBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
+                    regenSecretBtn.addEventListener('click', () => {
+                        character.darkSecret = darkSecrets[Math.floor(Math.random() * darkSecrets.length)];
+                        document.getElementById(`secret-${index}`).innerText = character.darkSecret;
+                    });
+                    secretRow.appendChild(regenSecretBtn);
+                    charInfo.appendChild(secretRow);
+
+                    // Add a question mark icon with tooltip
+                    const tooltipIcon = document.createElement('i');
+                    tooltipIcon.className = 'bi bi-question-circle-fill ms-2';
+                    tooltipIcon.setAttribute('data-bs-toggle', 'tooltip');
+                    tooltipIcon.setAttribute('data-bs-placement', 'top');
+                    tooltipIcon.setAttribute('title', 'You can reroll Occupation, Place of Living, or Dark Secret if they break the consistency.');
+                    charInfo.appendChild(tooltipIcon);
+
+                    // Initialize tooltip
+                    const tooltip = new bootstrap.Tooltip(tooltipIcon);
+
+                    colLeft.appendChild(charInfo);
+
+                    // Right Column - Rich Text Input
+                    const colRight = document.createElement('div');
+                    colRight.className = 'col-md-6 col-12';
+                    const editorContainer = document.createElement('div');
+                    editorContainer.id = 'editor' + index;
+                    editorContainer.className = 'editor-container';
+                    colRight.appendChild(editorContainer);
+
+                    row.appendChild(colLeft);
+                    row.appendChild(colRight);
+                    tabPane.appendChild(row);
+                    tabsContent.appendChild(tabPane);
+                });
+
+                // Initialize Quill editors and load content
+                generatedCharacters.forEach((character, index) => {
+                    character.quill = new Quill('#editor' + index, {
+                        theme: 'snow',
+                    });
+
+                    // Restore the saved Quill content (HTML)
+                    character.quill.root.innerHTML = character.quillContent;
+                });
+            }
+
+        } catch (error) {
+            alert('Error loading JSON file: ' + error.message);
+        }
+    };
+
+    // Read the file as text
+    reader.readAsText(file);
+}
+
+// Get references to the button and file input
+const uploadButton = document.getElementById('upload-btn');
+const downloadButton = document.getElementById('download-btn');
+const fileInput = document.getElementById('file-input');
+
+// Add event listener to the button to trigger the file input click
+uploadButton.addEventListener('click', function() {
+    fileInput.click(); // Programmatically click the hidden file input
+});
+
+// Add an event listener to handle the file selection
+fileInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        loadDataFromJson(file); // Call the function to load the file content
+    }
+});
+
+// Add event listener to the button to trigger the save progress
+downloadButton.addEventListener('click', function() {
+    saveDataToJson();
+});
+
 
 // Call loadData when the DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {

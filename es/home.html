@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Show 'em Up Español</title>
+    <title>Show 'em Up (Español)</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Quill CSS for Rich Text Editor -->
@@ -29,51 +29,64 @@
     <!-- Offcanvas Side Menu -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="settingsOffcanvas" aria-labelledby="settingsOffcanvasLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="settingsOffcanvasLabel">Settings</h5>
+            <h5 class="offcanvas-title" id="settingsOffcanvasLabel">Opciones</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column">
             <div class="form-group mb-3">
-                <label for="min-age">Min Age:</label>
+                <label for="min-age">Edad Mínima:</label>
                 <input type="number" id="min-age" class="form-control" value="1" min="1" max="120">
             </div>
             <div class="form-group mb-3">
-                <label for="max-age">Max Age:</label>
+                <label for="max-age">Edad Máxima:</label>
                 <input type="number" id="max-age" class="form-control" value="120" min="1" max="120">
             </div>
             <div class="form-group mb-3">
-                <label for="num-characters">Number of Characters:</label>
+                <label for="num-characters">Cantidad de Personajes:</label>
                 <input type="number" id="num-characters" class="form-control" value="3" min="1" max="10">
             </div>
             <div class="form-group mb-3">
-                <label for="language-select">Language:</label>
+                <label for="language-select">Idioma:</label>
                 <select id="language-select" class="form-control">
                     <option value="en" selected>English</option>
                     <option value="es">Español</option>
                 </select>
             </div>
-            <!-- Spacer to push the buttons to the bottom -->
-            <div class="flex-grow-1"></div>
             <!-- Apply Settings Button -->
             <div class="form-group mb-3">
-                <button id="apply-settings-button" class="btn btn-primary w-100">Apply Settings</button>
+                <button id="apply-settings-button" class="btn btn-primary w-100">Aplicar Cambios</button>
             </div>
+            <!-- Spacer to push the buttons to the bottom -->
+            <div class="flex-grow-1"></div>
             <!-- Theme Toggle Button -->
             <div class="form-group mb-3 text-center">
                 <button id="theme-toggle" class="btn btn-link">
                     <i id="theme-icon" class="bi bi-lightbulb"></i>
                 </button>
             </div>
+
+            <!-- Save and load progress // Theme switch -->
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <!-- Button to Save progress -->
+                    <button id="download-btn" class="btn btn-primary"><i class="bi bi-download"></i> Guardar Progreso</button>
+                </div>
+                <div class="col-md-6">
+                    <!-- Hidden file input -->
+                    <input type="file" id="file-input" accept="application/json" style="display: none;" />
+                    <!-- Button to load progress -->
+                    <button id="upload-btn" class="btn btn-primary"><i class="bi bi-upload"></i> Cargar Progreso</button>
+                </div>
+            </div>            
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="container mt-5">
-        <h1>BAJO CONSTRUCCIÓN, AÚN NO FUNCIONA EN ESPAÑOL</h1>
         <!-- Generate Characters Button -->
         <div class="text-center mb-4" id="button-container">
             <button type="button" class="btn btn-primary btn-lg" id="generate-button" disabled>
-                Start Writing!
+                ¡Empezar a Escribir!
             </button>
         </div>
 
@@ -81,7 +94,7 @@
         <div id="tabs-container" style="display: none;">
             <!-- Scene Section -->
             <div id="scene-container" class="mt-4">
-                <h3>Scene</h3>
+                <h3>Escena</h3>
                 <p id="scene-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur
                     interdum, nisl nisi consectetur nisi, euismod aliquam nisi nisl euismod nisi.
@@ -90,10 +103,10 @@
             <!-- Action Buttons -->
             <div id="actions-container" class="text-center mt-4">
                 <button id="regenerate-all-button" class="btn btn-primary me-2">
-                    Regenerate All Characters
+                    Crear Nuevos Personajes
                 </button>
                 <button id="export-pdf-button" class="btn btn-primary">
-                    Export All Characters as PDF
+                    Exportar Personajes como PDF
                 </button>
             </div>
             <!-- Tabs Navigation -->
@@ -109,58 +122,57 @@
         <!-- Tips Section -->
         <div class="row mt-5" id="tips-section">
             <div class="col-md-6">
-                <h2>What is Show em' Up?</h2>
+                <h2>¿Que es Show em' Up?</h2>
                 <p>
-                    This tool is based on a principle that in story telling, specially from the character perspective, one should "Show, don't Tell." This principle I learned on a class by Brandon Sanderson on characters, where he explains this in much more details and better than I will be able to here.
+                    Esta herramienta se basa en el principio de que en la narrativa, especialmente desde la perspectiva del personaje, uno debe "Mostrar, no Contar". Este principio lo aprendí en una clase impartida por Brandon Sanderson sobre personajes, donde explica esto con más detalles y mejor que yo podría hacerlo aquí. (La clase es en inglés)
                 </p>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/vm6h4Oa0jM0?si=R04DuQwwRcDIklZj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 <p>
-                    One of the examples of the class was:
                     <br>
                     <br>
-                    Age: 56
+                    Edad: 56
                     <br>
-                    Gender: Female
+                    Género: Femenino
                     <br>
-                    Occupation: Mortician
+                    Ocupación: Embaladora
                     <br>
-                    Place of Living: Motel
+                    Lugar de Vivienda: Motel
                     <br>
-                    Dark Secret: Killed her brother (Zombie)
-                    <br>
-                    <br>
-                    And the idea is to describe that character through the scene, for example:
+                    Secreto Oscuro: Mató a su hermano (Zombie)
                     <br>
                     <br>
-                    "She was tired after the long shift that ended deep into the night. The stench was hard to get rid of, even after a shower, few people would believe how much death can stink.
+                    Y la idea es describir ese personaje a través de la escena, por ejemplo:
+                    <br>
+                    <br>
+                    "Estaba cansada después del largo turno que terminó bien entrada la noche. El hedor era difícil de quitar, incluso después de una ducha; pocas personas creerían lo mucho que puede apestar la muerte.
 
-                    Through the cheap blinds, the lights of the signs on the street can be seen. Red, purple, white. A whole spectrum of colors, mostly from the sign at the top of the motel, making it hard to sleep.
+                    A través de las persianas baratas, se podían ver las luces de los letreros en la calle. Rojo, púrpura, blanco. Todo un espectro de colores, en su mayoría del letrero en la parte superior del motel, lo que hacía difícil dormir.
 
-                    Her mind made a puzzle, hard to set straight, always running wild from her control, she could not avoid reminiscing of other times. Times when things were simple. At her almost sixties, she could not complain, her life was good enough, but the past, specially with this smell enhancing the memories, seemed so much simpler, a time when she had someone to rely on, someone who would be with her for life... or at least for his life. And even in death, that smile would not stop haunting her."
+                    Su mente formaba un rompecabezas, difícil de ordenar, siempre descontrolada, corriendo libremente fuera de su dominio. No podía evitar recordar otros tiempos. Tiempos cuando las cosas eran sencillas. A sus casi sesenta años, no podía quejarse, su vida era lo suficientemente buena, pero el pasado, especialmente con este olor que intensificaba los recuerdos, parecía mucho más simple, una época en la que tenía a alguien en quien confiar, alguien que estaría con ella para toda la vida... o al menos para su vida. Y aún en la muerte, esa sonrisa no dejaba de atormentarla."
                     <br>
                     <br>
-                    I am not the best writer, so the scene can be improved, but you get the idea, I didn't mention explicitly that she is a mortician, but it can be kind of inferred from the context and the way the scene is described from her eyes.
+                    No soy un escritor muy experimentado, así que la escena puede ser mejorada, pero se entiende la idea, no mencioné explícitamente que ella es embaladora, pero se puede inferir de el contexto y la forma en que la escena está descrita desde sus ojos.
                     <br>
                     <br>
-                    I would heavily recommend you watch the whole playlist of lectures to know more as they are very informative!
+                    ¡Te recomendaría fuertemente ver toda la playlist de conferencias para saber más a detalle como funciona, ya que son muy informativos!
                     <br>
                     <br>
-                    <a href="https://youtube.com/playlist?list=PLH3mK1NZn9QqOSj3ObrP3xL8tEJQ12-vL&si=ytKSppYbu8fnh54q">Brandon Sanderson - 318R by Camera Panda</a>
+                    <a href="https://youtube.com/playlist?list=PLH3mK1NZn9QqOSj3ObrP3xL8tEJQ12-vL&si=ytKSppYbu8fnh54q">Brandon Sanderson - 318R por Camera Panda</a>
                 </p>
             </div>
             <div class="col-md-6">
-                <h2>How to use it:</h2>
+                <h2>Cómo usarlo:</h2>
                 <p>
-                    The tool will generate 3 characters at random (or more, depending on the settings) with predefined occupations, places of living and dark secrets.
+                    La herramienta generará 3 personajes al azar (o más, dependiendo de la configuración) con ocupaciones, lugares de residencia y secretos oscuros predefinidos.
                     <br>
                     <br>
-                    Your job is to take these characters and describe the scene (also predefined and given to you at random) from their eyes, making sure to hint at who they are, based on what they see on the scene and how they react.
+                    Tu tarea es tomar estos personajes y describir la escena (también predefinida y dada al azar) desde sus ojos, asegurándote de insinuar quiénes son, basándote en lo que ven en la escena y cómo reaccionan.
                     <br>
                     <br>
-                    There is an editor on the page, so no external tools are needed, just have fun!
+                    Hay un editor en la página, por lo que no se necesitan herramientas externas, ¡solo diviértete!
                     <br>
                     <br>
-                    Note: Occupations, places of living, dark secrets and scenes, have been generated using AI to have a big sample as a base, but if you want, feel free to add more on the source code and I will try to accept the changes to have more variety!
+                    Nota: Las ocupaciones, lugares de residencia, secretos oscuros y escenas han sido generados usando IA para tener una gran muestra como base, pero si lo deseas, siéntete libre de agregar más en el código fuente e intentaré aceptar los cambios para tener más variedad.
                 </p>
             </div>
         </div>
